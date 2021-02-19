@@ -17,8 +17,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 17,
-  "iteration": 1598360859162,
+  "id": 28,
+  "iteration": 1613395804356,
   "links": [],
   "panels": [
     {
@@ -36,8 +36,8 @@
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "title": "$SPP_Server Overview",
@@ -95,12 +95,12 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -195,12 +195,12 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -246,7 +246,7 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "95% Percentille / last 24h of each component memory usage",
+      "description": "95% Percentille / last 24h of each component memory usage\nMax root storage usage  / last 24h of Server and vSnap",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -277,7 +277,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 4,
+        "w": 5,
         "x": 10,
         "y": 1
       },
@@ -295,12 +295,12 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -342,11 +342,66 @@
             ]
           ],
           "tags": []
+        },
+        {
+          "alias": "\"$tag_Mounted\" on $tag_ssh_type",
+          "groupBy": [
+            {
+              "params": [
+                "24h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "Mounted"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "ssh_type"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "df_ssh",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_14",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Use%"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "ssh_type",
+              "operator": "=",
+              "value": "SERVER"
+            },
+            {
+              "condition": "OR",
+              "key": "ssh_type",
+              "operator": "=",
+              "value": "VSNAP"
+            }
+          ]
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "SPP-Server File Systems (Catalog)",
+      "title": "SPP Catalog Space",
       "type": "bargauge"
     },
     {
@@ -392,8 +447,8 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 10,
-        "x": 14,
+        "w": 9,
+        "x": 15,
         "y": 1
       },
       "id": 136,
@@ -412,12 +467,12 @@
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -483,15 +538,14 @@
       "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {}
         },
         "overrides": []
       },
       "fill": 1,
       "fillGradient": 1,
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 0,
         "y": 8
@@ -514,16 +568,19 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "seriesOverrides": [],
@@ -676,7 +733,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 8,
         "y": 8
@@ -696,12 +753,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -763,7 +820,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 12,
         "y": 8
@@ -783,12 +840,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -850,7 +907,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 16,
         "y": 8
@@ -870,12 +927,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -907,6 +964,18 @@
               "key": "jobName",
               "operator": "=~",
               "value": "/.*catalog.*/"
+            },
+            {
+              "condition": "AND",
+              "key": "status",
+              "operator": "=",
+              "value": "COMPLETED"
+            },
+            {
+              "condition": "AND",
+              "key": "subPolicyType",
+              "operator": "=",
+              "value": "BACKUP"
             }
           ]
         }
@@ -937,7 +1006,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 20,
         "y": 8
@@ -957,12 +1026,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -1005,6 +1074,281 @@
     },
     {
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 0,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "noValue": "N/A",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 65
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 4,
+        "x": 8,
+        "y": 11
+      },
+      "id": 98,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.3.3",
+      "scopedVars": {
+        "SPP_Server": {
+          "selected": true,
+          "text": "default",
+          "value": "default"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_ssh_type",
+          "groupBy": [
+            {
+              "params": [
+                "24h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "ssh_type"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "ssh_mpstat_cmd",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_14",
+          "query": "SELECT max(\"%idle\") *-1 + 100 FROM \"ssh_mpstat_cmd\" WHERE $timeFilter GROUP BY time(10m), \"COMMAND\"",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "%idle"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              },
+              {
+                "params": [
+                  "*-1 + 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Highest CPU load by Component",
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 12,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 93,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "SPP_Server": {
+          "selected": true,
+          "text": "default",
+          "value": "default"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Total",
+          "groupBy": [],
+          "measurement": "vmStats",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_90",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "vmCount"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Protected",
+          "groupBy": [],
+          "measurement": "vmStats",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_90",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "vmCountProtected"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Unprotected",
+          "groupBy": [],
+          "measurement": "vmStats",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_90",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "vmCountUnprotected"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "VM Statistics",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
       "description": "This panel shows how much the dela did increase, leaving out going down again.\nGood for noticing errors, even if they disappeared",
       "fieldConfig": {
         "defaults": {
@@ -1030,10 +1374,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 7,
         "w": 4,
-        "x": 8,
-        "y": 12
+        "x": 16,
+        "y": 11
       },
       "id": 142,
       "interval": "24h",
@@ -1049,12 +1393,12 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": false
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -1236,163 +1580,9 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "SPPmon Collection Error raise ratio",
+      "title": "SPPmon Collection Errors (24h)",
       "transformations": [],
       "type": "gauge"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 12,
-        "y": 12
-      },
-      "hiddenSeries": false,
-      "id": 93,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "scopedVars": {
-        "SPP_Server": {
-          "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Total",
-          "groupBy": [],
-          "measurement": "vmStats",
-          "orderByTime": "ASC",
-          "policy": "$SPP_Server\".\"rp_days_90",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "vmCount"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Protected",
-          "groupBy": [],
-          "measurement": "vmStats",
-          "orderByTime": "ASC",
-          "policy": "$SPP_Server\".\"rp_days_90",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "vmCountProtected"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Unprotected",
-          "groupBy": [],
-          "measurement": "vmStats",
-          "orderByTime": "ASC",
-          "policy": "$SPP_Server\".\"rp_days_90",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "vmCountUnprotected"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "VM Statistics",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
     },
     {
       "cacheTimeout": null,
@@ -1429,8 +1619,8 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 16,
-        "y": 12
+        "x": 20,
+        "y": 11
       },
       "id": 128,
       "interval": null,
@@ -1450,12 +1640,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -1489,100 +1679,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Catalog Backup Duration",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "decimals": 0,
-          "mappings": [],
-          "noValue": "N/A",
-          "nullValueMode": "connected",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 12
-      },
-      "id": 143,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.1.1",
-      "scopedVars": {
-        "SPP_Server": {
-          "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
-        }
-      },
-      "targets": [
-        {
-          "alias": "Catalog Backup",
-          "groupBy": [
-            {
-              "params": [
-                "24h"
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "jobs",
-          "orderByTime": "ASC",
-          "policy": "$SPP_Server\".\"rp_days_90",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "jobLogsCount"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Job Logs Stored 24h",
       "type": "stat"
     },
     {
@@ -1621,7 +1717,7 @@
         "h": 6,
         "w": 4,
         "x": 0,
-        "y": 16
+        "y": 15
       },
       "id": 97,
       "interval": "",
@@ -1637,12 +1733,12 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -1736,7 +1832,7 @@
         "h": 6,
         "w": 4,
         "x": 4,
-        "y": 16
+        "y": 15
       },
       "id": 99,
       "interval": "1h",
@@ -1752,12 +1848,12 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -1816,127 +1912,9 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "decimals": 0,
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "noValue": "N/A",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 65
-              },
-              {
-                "color": "red",
-                "value": 85
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 4,
-        "x": 16,
-        "y": 16
-      },
-      "id": 98,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.1.1",
-      "scopedVars": {
-        "SPP_Server": {
-          "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
-        }
-      },
-      "targets": [
-        {
-          "alias": "$tag_ssh_type",
-          "groupBy": [
-            {
-              "params": [
-                "24h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "ssh_type"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "ssh_mpstat_cmd",
-          "orderByTime": "ASC",
-          "policy": "$SPP_Server\".\"rp_days_14",
-          "query": "SELECT max(\"%idle\") *-1 + 100 FROM \"ssh_mpstat_cmd\" WHERE $timeFilter GROUP BY time(10m), \"COMMAND\"",
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "%idle"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "min"
-              },
-              {
-                "params": [
-                  "*-1 + 100"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Highest CPU load by Component",
-      "type": "stat"
-    },
-    {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "Sum of replicated bytes within the last 24h\nSum of transferred bytes within the last 24h\n",
+      "description": "Sum of replicated bytes (VM) within the last 24h\nSum of transferred bytes (VM) within the last 24h\nSum of transferred bytes (Office365) within the last 24h",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1960,7 +1938,7 @@
         "h": 6,
         "w": 4,
         "x": 20,
-        "y": 16
+        "y": 15
       },
       "id": 125,
       "interval": null,
@@ -1980,17 +1958,17 @@
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
         {
-          "alias": "Replicated Bytes",
+          "alias": "VM Replicated",
           "groupBy": [
             {
               "params": [
@@ -2021,7 +1999,7 @@
           "tags": []
         },
         {
-          "alias": "Backuped Bytes",
+          "alias": "VM Backuped",
           "groupBy": [
             {
               "params": [
@@ -2049,12 +2027,49 @@
               }
             ]
           ],
+          "tags": [
+            {
+              "key": "messageId",
+              "operator": "=",
+              "value": "CTGGA2384"
+            }
+          ]
+        },
+        {
+          "alias": "Office365 Transferred",
+          "groupBy": [
+            {
+              "params": [
+                "24h"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "office365TransfBytes",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_14",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transferredBytes"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
           "tags": []
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "VM Statistics (Total of last 24h)",
+      "title": "Additional Statistics (Total of last 24h)",
       "type": "stat"
     },
     {
@@ -2083,7 +2098,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 19
+        "y": 18
       },
       "id": 144,
       "options": {
@@ -2100,13 +2115,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.3.3",
       "repeatDirection": "h",
       "scopedVars": {
         "SPP_Server": {
           "selected": true,
-          "text": "cb11_new",
-          "value": "cb11_new"
+          "text": "default",
+          "value": "default"
         }
       },
       "targets": [
@@ -2122,7 +2137,7 @@
             [
               {
                 "params": [
-                  "mean_duration"
+                  "duration"
                 ],
                 "type": "field"
               },
@@ -2147,6 +2162,100 @@
       "timeShift": null,
       "title": "SPP Version",
       "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "N/A",
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 16,
+        "y": 18
+      },
+      "id": 143,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.3.3",
+      "scopedVars": {
+        "SPP_Server": {
+          "selected": true,
+          "text": "default",
+          "value": "default"
+        }
+      },
+      "targets": [
+        {
+          "alias": "Catalog Backup",
+          "groupBy": [
+            {
+              "params": [
+                "24h"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "jobs",
+          "orderByTime": "ASC",
+          "policy": "$SPP_Server\".\"rp_days_90",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "jobLogsCount"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Job Logs Stored 24h",
+      "type": "stat"
     }
   ],
   "refresh": "15m",
@@ -2158,11 +2267,15 @@
       {
         "current": {
           "selected": true,
-          "text": "cb11_new",
+          "tags": [],
+          "text": [
+            "default"
+          ],
           "value": [
-            "cb11_new"
+            "default"
           ]
         },
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Repeat Row for ",
@@ -2197,5 +2310,5 @@
   "timezone": "",
   "title": "Multiple Server Overview",
   "uid": "GtH9VNSMz",
-  "version": 31
+  "version": 15
 }
